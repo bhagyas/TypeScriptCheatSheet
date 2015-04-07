@@ -6,20 +6,19 @@ To improve this document, please fork and submit a pull request!
 
 Last updated for: TypeScript 0.9.5
 
-Primitive types
+## Primitive types
 
-Any type (explicitly untyped)	any
-void type (null or undefined, use for function returns only)	void
-String	string
-Number	number
-Boolean	boolean
-Named types (interface, class, enum)
-Interface	interface IChild extends IParent, SomeClass {
+| Any type (explicitly untyped)	| any |
+| void type (null or undefined, use for function returns only) |void |
+| String | string |
+| Number | number |
+| Boolean	| boolean |
+| Named types (interface, class, enum) | Interface	interface IChild extends IParent, SomeClass {
   property:Type;
   optionalProp?:Type;
   optionalMethod?(arg1:Type):ReturnType;
-}
-Class	class Child extends Parent implements IChild, IOtherChild {
+}|
+| Class	 | class Child extends Parent implements IChild, IOtherChild {
   property:Type;
   defaultProperty:Type = 'default value';
   private _privateProperty:Type;
@@ -36,13 +35,14 @@ Class	class Child extends Parent implements IChild, IOtherChild {
   subclassedMethod(arg1:Type):ReturnType {
     super.subclassedMethod(arg1);
   }
-}
-Enum	enum Options {
+}|
+| Enum	| enum Options {
   FIRST,
   EXPLICIT = 1,
   BOOLEAN = Options.FIRST | Options.EXPLICIT
-}
-Object type literals
+} |
+
+## Object type literals
 Object with implicit Any properties	{ foo; bar; }
 Object with optional property	{ required:Type; optional?:Type; }
 Hash map	{ [key:string]:Type; }
