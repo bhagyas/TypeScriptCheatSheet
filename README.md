@@ -10,49 +10,40 @@ Last updated for: TypeScript 0.9.5
     <tr>
       <th colspan="2">Primitive types</th>
     </tr>
-
     <tr>
       <td>Any type (explicitly untyped)</td>
-
       <td><code>any</code></td>
     </tr>
-
     <tr>
       <td>void type (null or undefined, use for function returns only)</td>
-
       <td><code>void</code></td>
     </tr>
-
     <tr>
       <td>String</td>
-
       <td><code>string</code></td>
     </tr>
-
     <tr>
       <td>Number</td>
-
       <td><code>number</code></td>
     </tr>
-
     <tr>
       <td>Boolean</td>
-
       <td><code>boolean</code></td>
     </tr>
-
     <tr>
       <th colspan="2">Named types (interface, class, enum)</th>
     </tr>
-
     <tr>
       <td>Interface</td>
-
-      <td><code>interface IChild extends IParent, SomeClass {<br />
-      &nbsp; property:Type;<br />
-      &nbsp; optionalProp?:Type;<br />
-      &nbsp; optionalMethod?(arg1:Type):ReturnType;<br />
-      }</code></td>
+      <td>
+        <code>
+            interface IChild extends IParent, SomeClass {<br/>
+                property: Type;<br/>
+                optionalProp?: Type;<br/>
+                optionalMethod?(arg1: Type): ReturnType;<br/>
+            }
+        </code>
+      </td>
     </tr>
 
     <tr>
