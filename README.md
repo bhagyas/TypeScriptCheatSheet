@@ -6,14 +6,22 @@ To improve this document, please fork and submit a pull request!
 
 Last updated for: TypeScript 0.9.5
 
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
 ## Primitive types
 
-| Any type (explicitly untyped)	| any |
-| void type (null or undefined, use for function returns only) |void |
-| String | string |
-| Number | number |
-| Boolean	| boolean |
-| Named types (interface, class, enum) | Interface	interface IChild extends IParent, SomeClass {
+Any type (explicitly untyped)	| any
+void type (null or undefined, use for function returns only) | void
+String | string
+Number | number
+Boolean	| boolean
+
+## Named types (interface, class, enum)
+
+Interface	interface IChild extends IParent, SomeClass {
   property:Type;
   optionalProp?:Type;
   optionalMethod?(arg1:Type):ReturnType;
