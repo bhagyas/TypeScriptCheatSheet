@@ -8,7 +8,7 @@ Last updated for: TypeScript 0.9.5
 
 ## Primitive Types
 
-` ` | ` `
+Concept | Code      
 --- | ---
 Any type (explicitly untyped) | `any`
 void type (null or undefined, use for function returns only) | `void`
@@ -16,177 +16,80 @@ String | `string`
 Number | `number`
 Boolean | `boolean`
 
-<table>
-    <tr>
-      <th colspan="2">Named types (interface, class, enum)</th>
-    </tr>
-    <tr>
-      <td>Interface</td>
-      <td>
-        <code>
-            interface IChild extends IParent, SomeClass {<br/>
-                property: Type;<br/>
-                optionalProp?: Type;<br/>
-                optionalMethod?(arg1: Type): ReturnType;<br/>
-            }
-        </code>
-      </td>
-    </tr>
+## Named types (interface, class, enum)
 
-    <tr>
-      <td>Class</td>
+Concept | Code      
+--- | ---
+Interface | `interface IChild extends IParent, SomeClass {`
+          | `    property: Type;`
+          | `    optionalProp?: Type;`
+          | `    optionalMethod?(arg1: Type): ReturnType;`
+          | `}`
+Class | `class Child extends Parent implements IChild, IOtherChild {`
+      | `property:Type;`
+      | `defaultProperty:Type = 'default value';`      
+      | `private _privateProperty:Type;`      
+      | `static staticProperty:Type;`      
+      | `constructor(arg1:Type) {`      
+      | `super(arg1);`      
+      | `}`      
+      | `private _privateMethod():Type {}`      
+      | `methodProperty:(arg1:Type) => ReturnType;`      
+      | `overloadedMethod(arg1:Type):ReturnType;`      
+      | `overloadedMethod(arg1:OtherType):ReturnType;`      
+      | `overloadedMethod(arg1:CommonT):CommonReturnT {}`      
+      | `static staticMethod():ReturnType {}`      
+      | `subclassedMethod(arg1:Type):ReturnType {`      
+      | `super.subclassedMethod(arg1);`      
+      | `}`      
+      | `}` 
+Enum | `enum Options {`
+     | `FIRST,`
+     | `EXPLICIT = 1,`
+     | `BOOLEAN = Options.FIRST | Options.EXPLICIT`
+     | `}`    
 
-      <td><code>class Child extends Parent implements IChild, IOtherChild {<br />
-      &nbsp; property:Type;<br />
-      &nbsp; defaultProperty:Type = 'default value';<br />
-      &nbsp; private _privateProperty:Type;<br />
-      &nbsp; static staticProperty:Type;<br />
-      &nbsp; constructor(arg1:Type) {<br />
-      &nbsp; &nbsp; super(arg1);<br />
-      &nbsp; }<br />
-      &nbsp; private _privateMethod():Type {}<br />
-      &nbsp; methodProperty:(arg1:Type) =&gt; ReturnType;<br />
-      &nbsp; overloadedMethod(arg1:Type):ReturnType;<br />
-      &nbsp; overloadedMethod(arg1:OtherType):ReturnType;<br />
-      &nbsp; overloadedMethod(arg1:CommonT):CommonReturnT {}<br />
-      &nbsp; static staticMethod():ReturnType {}<br />
-      &nbsp; subclassedMethod(arg1:Type):ReturnType {<br />
-      &nbsp; &nbsp; super.subclassedMethod(arg1);<br />
-      &nbsp; }<br />
-      }</code></td>
-    </tr>
+## Object type literals
 
-    <tr>
-      <td>Enum</td>
+Concept | Code      
+--- | ---
+Object with implicit Any properties | `{ foo; bar; }`
+Object with optional property | `{ required:Type; optional?:Type; }`
+Hash map | `{ [key:string]:Type; }`
 
-      <td><code>enum Options {<br />
-      &nbsp; FIRST,<br />
-      &nbsp; EXPLICIT = 1,<br />
-      &nbsp; BOOLEAN = Options.FIRST | Options.EXPLICIT<br />
-      }</code></td>
-    </tr>
+## Arrays
 
-    <tr>
-      <th colspan="2">Object type literals</th>
-    </tr>
+Concept | Code      
+--- | ---
+Array of strings | `string[]` or `Array<string>`
+Array of functions that return strings | `{ ():string; }[]` or `Array<()=>string>`
 
-    <tr>
-      <td>Object with implicit Any properties</td>
+## Functions
 
-      <td><code>{ foo; bar; }</code></td>
-    </tr>
+Concept | Code      
+--- | ---
+Function | `{ (arg1:Type, argN:Type):Type; }` or `(arg1:Type, argN:Type) => Type;`
+Constructor | `{ new ():ConstructedType; }` or `new () => ConstructedType;`
+Function type with optional param | `(arg1:Type, optional?:Type) =>; ReturnType`
+Function type with `rest` param | `(arg1:Type, ...allOtherArgs:Type[]) =>; ReturnType`
+Function type with static property | `{ ():Type; staticProp:Type; }`
+Default argument | `function fn(arg1:Type = 'default'):ReturnType {}`
+Arrow function | `(arg1:Type):ReturnType =>; {}` or `(arg1:Type):ReturnType =>; Expression`
 
-    <tr>
-      <td>Object with optional property</td>
+## Generics
 
-      <td><code>{ required:Type; optional?:Type; }</code></td>
-    </tr>
+Concept | Code      
+--- | ---
+Function using type parameters | `<T>(items:T[], callback:(item:T) => T):T[]`
+Interface with multiple types | `interface Pair&lt;T1, T2&gt; {`
+      | `first:T1;`
+      | `second:T2;`
+      | `}`
+Constrained type parameter | `<T extends ConstrainedType>():T`
 
-    <tr>
-      <td>Hash map</td>
+## Other
 
-      <td><code>{ [key:string]:Type; }</code></td>
-    </tr>
+Concept | Code      
+--- | ---
+Type of a variable | `typeof varName`
 
-    <tr>
-      <th colspan="2">Arrays</th>
-    </tr>
-
-    <tr>
-      <td>Array of strings</td>
-
-      <td><code>string[]</code> or<br />
-      <code>Array&lt;string&gt;</code></td>
-    </tr>
-
-    <tr>
-      <td>Array of functions that return strings</td>
-
-      <td><code>{ ():string; }[]</code> or<br />
-      <code>Array&lt;() =&gt; string&gt;</code></td>
-    </tr>
-
-    <tr>
-      <th colspan="2">Functions</th>
-    </tr>
-
-    <tr>
-      <td>Function</td>
-
-      <td><code>{ (arg1:Type, argN:Type):Type; }</code> or<br />
-      <code>(arg1:Type, argN:Type) =&gt; Type;</code></td>
-    </tr>
-
-    <tr>
-      <td>Constructor</td>
-
-      <td><code>{ new ():ConstructedType; }</code> or<br />
-      <code>new () =&gt; ConstructedType;</code></td>
-    </tr>
-
-    <tr>
-      <td>Function type with optional param</td>
-
-      <td><code>(arg1:Type, optional?:Type) =&gt; ReturnType</code></td>
-    </tr>
-
-    <tr>
-      <td>Function type with <code>rest</code> param</td>
-
-      <td><code>(arg1:Type, ...allOtherArgs:Type[]) =&gt; ReturnType</code></td>
-    </tr>
-
-    <tr>
-      <td>Function type with static property</td>
-
-      <td><code>{ ():Type; staticProp:Type; }</code></td>
-    </tr>
-
-    <tr>
-      <td>Default argument</td>
-
-      <td><code>function fn(arg1:Type = 'default'):ReturnType {}</code></td>
-    </tr>
-
-    <tr>
-      <td>Arrow function</td>
-
-      <td><code>(arg1:Type):ReturnType =&gt; {}</code> or<br />
-      <code>(arg1:Type):ReturnType =&gt; Expression</code></td>
-    </tr>
-
-    <tr>
-      <th colspan="2">Generics</th>
-    </tr>
-
-    <tr>
-      <td>Function using type parameters</td>
-
-      <td><code>&lt;T&gt;(items:T[], callback:(item:T) =&gt; T):T[]</code></td>
-    </tr>
-
-    <tr>
-      <td>Interface with multiple types</td>
-
-      <td><code>interface Pair&lt;T1, T2&gt; {<br />
-      &nbsp; first:T1;<br />
-      &nbsp; second:T2;<br />
-      }</code></td>
-    </tr>
-
-    <tr>
-      <td>Constrained type parameter</td>
-
-      <td><code>&lt;T extends ConstrainedType&gt;():T</code></td>
-    </tr>
-
-    <tr>
-      <th colspan="2">Other</th>
-    </tr>
-
-    <tr>
-      <td>Type of a variable</td>
-
-      <td><code>typeof varName</code></td>
-    </tr>
-  </table>
