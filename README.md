@@ -8,7 +8,7 @@ Last updated for: TypeScript 0.9.5
 
 ## Primitive Types
 
-Concept | Code      
+Type | Code      
 --- | ---
 Any type (explicitly untyped) | `any`
 void type (null or undefined, use for function returns only) | `void`
@@ -18,36 +18,46 @@ Boolean | `boolean`
 
 ## Named types (interface, class, enum)
 
-Concept | Code      
---- | ---
-Interface | `interface IChild extends IParent, SomeClass {`
-          | `    property: Type;`
-          | `    optionalProp?: Type;`
-          | `    optionalMethod?(arg1: Type): ReturnType;`
-          | `}`
-Class | `class Child extends Parent implements IChild, IOtherChild {`
-      | `property:Type;`
-      | `defaultProperty:Type = 'default value';`      
-      | `private _privateProperty:Type;`      
-      | `static staticProperty:Type;`      
-      | `constructor(arg1:Type) {`      
-      | `super(arg1);`      
-      | `}`      
-      | `private _privateMethod():Type {}`      
-      | `methodProperty:(arg1:Type) => ReturnType;`      
-      | `overloadedMethod(arg1:Type):ReturnType;`      
-      | `overloadedMethod(arg1:OtherType):ReturnType;`      
-      | `overloadedMethod(arg1:CommonT):CommonReturnT {}`      
-      | `static staticMethod():ReturnType {}`      
-      | `subclassedMethod(arg1:Type):ReturnType {`      
-      | `super.subclassedMethod(arg1);`      
-      | `}`      
-      | `}` 
-Enum | `enum Options {`
-     | `FIRST,`
-     | `EXPLICIT = 1,`
-     | `BOOLEAN = Options.FIRST | Options.EXPLICIT`
-     | `}`    
+**Interface**
+
+```typescript
+ interface IChild extends IParent, SomeClass {
+     property: Type;
+     optionalProp?: Type;
+     optionalMethod?(arg1: Type): ReturnType;
+ }
+ ```
+
+**Class**
+```typescript
+ class Child extends Parent implements IChild, IOtherChild {
+   property:Type;
+   defaultProperty:Type = 'default value';      
+   private _privateProperty:Type;      
+   static staticProperty:Type;      
+   constructor(arg1:Type) {      
+   super(arg1);      
+ }      
+ private _privateMethod():Type {}      
+   methodProperty:(arg1:Type) => ReturnType;      
+   overloadedMethod(arg1:Type):ReturnType;      
+   overloadedMethod(arg1:OtherType):ReturnType;      
+   overloadedMethod(arg1:CommonT):CommonReturnT {}      
+   static staticMethod():ReturnType {}      
+   subclassedMethod(arg1:Type):ReturnType {      
+      super.subclassedMethod(arg1);      
+   }      
+ } 
+```
+
+**Enum**
+```typescript
+enum Options {
+    FIRST,
+    EXPLICIT = 1,
+    BOOLEAN = Options.FIRST | Options.EXPLICIT
+}
+```
 
 ## Object type literals
 
@@ -78,18 +88,33 @@ Arrow function | `(arg1:Type):ReturnType =>; {}` or `(arg1:Type):ReturnType =>; 
 
 ## Generics
 
-Concept | Code      
---- | ---
-Function using type parameters | `<T>(items:T[], callback:(item:T) => T):T[]`
-Interface with multiple types | `interface Pair&lt;T1, T2&gt; {`
-      | `first:T1;`
-      | `second:T2;`
-      | `}`
-Constrained type parameter | `<T extends ConstrainedType>():T`
+**Function using type parameters**
+
+```typescript
+<T>(items:T[], callback:(item:T) => T):T[]
+```
+
+**Interface with multiple types**
+
+```typescript
+interface Pair<T1, T2> {
+   first:T1;
+   second:T2;
+}
+```
+
+**Constrained type parameter**
+
+```
+<T extends ConstrainedType>():T
+```
 
 ## Other
 
 Concept | Code      
 --- | ---
 Type of a variable | `typeof varName`
+
+##Contributors
+- Bhagya Nirmaan Silva (http://about.me/bhagyas)
 
