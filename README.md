@@ -36,9 +36,9 @@ Boolean | `boolean`
    private _privateProperty:Type;      
    static staticProperty:Type;      
    constructor(arg1:Type) {      
-   super(arg1);      
- }      
- private _privateMethod():Type {}      
+    super(arg1);      
+   }      
+   private _privateMethod():Type {}      
    methodProperty:(arg1:Type) => ReturnType;      
    overloadedMethod(arg1:Type):ReturnType;      
    overloadedMethod(arg1:OtherType):ReturnType;      
